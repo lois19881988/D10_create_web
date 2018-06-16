@@ -1,0 +1,42 @@
+<!doctype html>
+<title>Obtain Stock Information Here</title>
+<link rel=stylesheet type=text/css href='{{ url_for('static',filename='style.css')}}'>
+<div class=page>
+  <h1>Obtain Stock Information Here</h1>
+  <div class=metanav>
+
+<h4>
+You can enter the NASDAQ index of the company you are intersted in and choose the indices you want to display.
+<br>
+Set your prefered reference date and define the period of time you want to track back to.
+</h4>
+
+<form id='userinput' method='post' action='/' > <!-- action is the URL you want to move to next-->   
+   <p>
+   NASDAQ index: <input type='text' name='ticker' placeholder='{{ticker_default}}' />
+   </p>
+   <p>
+   <input type="checkbox" name='features' value='Close' checked />Closing price<br>
+   <input type="checkbox" name='features' value='Open' />Opening price<br>
+   <input type="checkbox" name='features' value='High' />Daily high<br>
+   <input type="checkbox" name='features' value='Low' />Daily low<br>
+   </p>
+   <p>
+   End year: <input type='text' name='end_year' placeholder='{{end_date_year_default}}' />
+   </p> 
+   <p>
+   End month: <input type='text' name='end_month' placeholder='{{end_date_month_default}}' />
+   </p>
+   <p>
+   End day: <input type='text' name='end_day' placeholder='{{end_date_day_default}}' />
+   </p> 
+   <p>
+   Days back by: <input type='text' name='days_track' placeholder='{{days_track_default}}' />
+   </p>     
+   <p>
+   <input type='submit' value='Submit' /> <!-- value is the text that will appear on the button. -->
+   </p>
+</form>
+
+</div>
+</div>
