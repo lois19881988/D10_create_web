@@ -14,7 +14,7 @@ days_track_default = '365'
 
 def gen_plot(ticker, features, 
     end_date_year, end_date_month, end_date_day, days_track):
-    quandl.ApiConfig.api_key = '7JbKcz5VsYWrmjocYMsx'
+    quandl.ApiConfig.api_key = os.environ['quandl_key']
     
     stock_indices = {'Open':['Opening Price', '#440154'],
                      'Close':['Closing Price', '#30678D'],
