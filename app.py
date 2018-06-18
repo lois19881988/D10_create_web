@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-import os as os
+import os 
 import quandl
 import pandas as pd
 from bokeh.plotting import ColumnDataSource, Figure
@@ -28,13 +28,13 @@ def gen_plot(ticker, features,
     mydata = pd.DataFrame(quandl.get('WIKI/' + ticker, 
                                      start_date = start_date, 
                                      end_date = end_date)).reset_index()
-    mydata['Date'] = pd.to_datetime(mydata['Date'])
-    mydata = mydata[['Date',*features]]
+    mydata['Date'] = pd.to_datetime(mydata.get('Date',None))
+    mydata = mydata.get(['Date',*features], None)
     
-    data = {'xs': [mydata['Date'] for col in features],
-            'ys': [mydata[col] for col in features],
-            'labels': [stock_indices[col][0] for col in features],
-            'colors': [stock_indices[col][1] for col in features]}
+    data = {'xs': [mydata.get('Date', None) for col in features],
+            'ys': [mydata.get(col, None) for col in features],
+            'labels': [stock_indices.get(col, None)[0] for col in features],
+            'colors': [stock_indices.get(col, None)[1] for col in features]}
     
     source = ColumnDataSource(data)
     
